@@ -233,8 +233,10 @@ power_freq_widow=0
 
 
 # Specifiy oversampling factor, fmin (f0), and fmax (fn) to create the frequency grid.
-oversampling_factor=20
-frequencies = freq_grid(Time, oversample_factor=oversampling_factor, f0=20, fn=300)
+oversampling_factor=10
+f0=20
+fn=200
+frequencies = freq_grid(Time, oversample_factor=oversampling_factor, f0=f0, fn=fn)
 
 # To build a composite model with n components. The composite model is used to fit and optimise all extracted frequencies, amplitudes, and phases at the end of the iteration. These parameters are added to the composite model at each iteration using "Parameters()"
 
@@ -242,7 +244,9 @@ n_components = 0
 params = Parameters()
 
 # Here, we use 20 iterations. A stopping criterion can also be defined instead.
-for i in range(20):
+n_iterations = 20
+
+for i in range(n_iterations):
 
     periods = 1 / frequencies
     
